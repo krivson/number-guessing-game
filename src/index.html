@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="./css/output.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AlpineJS -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div
+      class="flex flex-col justify-center items-center h-screen bg-[#0F044C] font-poppins"
+    >
+      <div
+        class="bg-[#141E61] text-[#EEEEEE] flex flex-col gap-4 rounded-md justify-center items-center p-6"
+      >
+        <h1 class="text-xl">Number Guessing Game</h1>
+        <p class="text-sm">
+          Saya telah memilih angka antara 1 dan 100. Bisakah kamu menebaknya?
+        </p>
+
+        <div
+          x-data="{ count: 1 }"
+          class="flex flex-col items-center justify-center gap-4 w-64"
+        >
+          <div
+            class="flex items-center justify-between w-full gap-2 bg-[#787A91] text-[#141E61] text-center rounded-md px-1 py-1"
+          >
+            <!-- Tombol minus -->
+            <button
+              type="button"
+              x-on:click="count > 1 ? count-- : null"
+              class="cursor-pointer bg-[#EEEEEE] w-fit h-full rounded-md px-3 py-1 flex items-center justify-center"
+              :disabled="count <= 1"
+            >
+              -
+            </button>
+
+            <!-- Tampilan angka -->
+            <div
+              id="number"
+              x-text="count"
+              class="bg-transparent focus:outline-none w-full h-full flex justify-center items-center text-center appearance-none"
+            ></div>
+
+            <!-- Tombol plus -->
+            <button
+              type="button"
+              x-on:click="count++"
+              class="cursor-pointer bg-[#EEEEEE] w-fit h-full rounded-md px-3 py-1 flex items-center justify-center"
+            >
+              +
+            </button>
+          </div>
+
+          <p id="message" class="hidden"></p>
+
+          <button
+            class="bg-[#EEEEEE] text-[#141E61] rounded-md w-full px-4 py-2"
+            id="guess"
+          >
+            Guess
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+
+    <style>
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    </style>
+  </body>
+</html>
